@@ -1,0 +1,22 @@
+{
+    "name": "shop/crm",
+    "authors": [
+        {
+            "name": "author",
+            "email": "abc@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "SHOP\\CRM\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SHOP\\CRM\\CrmServiceProvider"
+            ]
+        }
+    }
+}

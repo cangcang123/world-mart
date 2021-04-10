@@ -1,0 +1,98 @@
+version: "3.7"
+services:
+  app:
+    build:
+      args:
+        user: sammy
+        uid: 1000
+      context: ./api
+      dockerfile: Dockerfile
+    image: crm
+    container_name: crm-app
+    restart: "on-failure"
+    # restart: "always"
+    depends_on:
+      - db
+      - redis
+      - mongodb
+    working_dir: /var/www/
+    # volumes:
+    #   - .:/var/www/
+    command: bash -c "sleep 10 && php artisan admin:reset-pass && php artisan serve --host=0.0.0.0 --port=8000"
+    ports:
+      - 8000:8000
+    networks:
+      - crm
+
+  nodejs:
+    build:
+      context: ./client/
+      dockerfile: Dockerfile
+    image: nodejs
+    container_name: nodejs
+    restart: unless-stopped
+    env_file: ./client/.env
+    command: npm run serve -- --port 3000
+    ports:
+      - 3000:3000
+    volumes: 
+      - ./client:/srv
+    networks:
+      - crm
+
+  redis:
+    image: redis:alpine
+    restart: "always"
+    container_name: crm-redis
+    environment:
+      SERVICE_NAME: redis
+    ports:
+      - '6379:6379'
+    networks:
+      - crm
+
+  mongodb:
+    image: mongo
+    restart: "always"
+    container_name: crm-mongodb
+    # volumes:
+    #   - .:${COMPOSE_APP_WORKING_DIR}
+    ports:
+      - '27018:27017'
+    networks:
+      - crm
+
+  db:
+    image: mysql:5.7
+    container_name: crm-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    ports:
+      - '3307:3306'
+    volumes:
+      - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+    networks:
+      - crm
+
+  # nginx:
+  #   image: nginx:alpine
+  #   container_name: crm-nginx
+  #   restart: unless-stopped
+  #   ports:
+  #     - 7000:80
+  #   volumes:
+  #     - ./:/var/www
+  #     - ./docker-compose/nginx:/etc/nginx/conf.d/
+  #   networks:
+  #     - crm
+
+networks:
+  crm:
+    driver: bridge

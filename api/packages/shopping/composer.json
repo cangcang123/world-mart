@@ -1,0 +1,22 @@
+{
+    "name": "shop/shopping",
+    "authors": [
+        {
+            "name": "minh",
+            "email": "nnm2301@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "SHOP\\Shopping\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SHOP\\Shopping\\ShoppingServiceProvider"
+            ]
+        }
+    }
+}

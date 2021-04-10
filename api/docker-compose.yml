@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+  completa-php:
+    image: daofresh/php-fpm:7.2.12
+    container_name: completa-api
+    working_dir: /var/www/html
+    volumes:
+      - .:/var/www/html
+    ports:
+      - 8000:8000
+    command: php artisan serve --host 0.0.0.0
+  # completa-queue:
+  #   image: daofresh/php-fpm:7.2.12
+  #   container_name: completa-queue
+  #   working_dir: /var/www/html
+  #   volumes:
+  #     - .:/var/www/html
+  #   command: php artisan queue:work

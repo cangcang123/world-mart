@@ -1,0 +1,1 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["lang-vi"],{"9a11":function(n,s,o){"use strict";o.r(s),s["default"]={login:{login:"Đăng nhập",sso:"Đăng nhập bằng SSO",username:"Tên đăng nhập",password:"Mật khẩu"}}}}]);

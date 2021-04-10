@@ -1,0 +1,13 @@
+@import "container";
+
+.page-message {
+    position: relative;
+    height: 100%;
+    background-color: #ffffff;
+    border-radius: 6px;
+    overflow: hidden;
+
+    @import "sidebar";
+    @import "panel";
+    @import "info";
+}

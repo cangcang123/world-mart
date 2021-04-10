@@ -1,0 +1,42 @@
+.sidebar-wrapper {
+
+    .sidebar-footer {
+
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        display: flex;
+
+        >div {
+            flex-grow: 1;
+            text-align: center;
+            height: $sidebar-footer-height;
+            line-height: $sidebar-footer-height;
+            position: static;
+            display: flex;
+
+            >a {
+                flex-grow: 1;
+                transition: all .3s ease-in-out;
+                cursor: pointer;
+
+                .mdi {
+                    font-size: 20px;
+                }
+
+                &:hover {
+                    background-color: rgba($color: #000000, $alpha: .1);
+                }
+            }
+
+            a .notification {
+                position: absolute;
+                top: 0;
+            }
+
+            &.pinned-footer {
+                display: none;
+            }
+        }
+    }
+}

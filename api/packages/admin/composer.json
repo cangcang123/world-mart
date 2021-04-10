@@ -1,0 +1,22 @@
+{
+    "name": "shop/admin",
+    "authors": [
+        {
+            "name": "Phan Khắc Đạo",
+            "email": "daopk2@vng.com.vn"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "SHOP\\Admin\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SHOP\\Admin\\AdminServiceProvider"
+            ]
+        }
+    }
+}

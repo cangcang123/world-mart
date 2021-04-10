@@ -1,0 +1,165 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    background-color: #e9ebee;
+}
+
+.container-fluid {
+    max-width: 1400px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    box-shadow: 0 0 0 30px white inset !important;
+}
+
+.form-group {
+    &.has-prefix {
+        position: relative;
+
+        .form-control {
+            padding-left: 34px;
+        }
+
+        .form-control-prefix {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            line-height: 38px;
+            width: 36px;
+            display: block;
+            text-align: center;
+            pointer-events: none;
+            &.mdi {
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+.page-add {
+    .submit-form {
+        button ~ button, button ~ a {
+            margin-left: 10px;
+        }
+    }
+}
+
+.el-button:focus {
+    outline: none;
+}
+
+.b-table-stacked {
+    &.align-left {
+        tbody > tr > [data-label]::before {
+            text-align: left !important;
+        }
+    }
+}
+
+.b-table .el-tag+.el-tag {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.chat-name .el-tag+.el-tag {
+    margin-left: 4px;
+}
+
+.chat-tags .el-tag+.el-tag {
+    margin-left: 4px;
+}
+
+.v-context, .v-context ul {
+    padding: 0;
+    overflow: visible;
+    max-height: none;
+
+    .context-menu-item {
+        padding: 10px 15px;
+        position: relative;
+        cursor: pointer;
+        border-bottom: 1px solid #e6e6e6;
+
+        &:first-child {
+            border-top-left-radius: .25rem;
+            border-top-right-radius: .25rem;
+        }
+        &:last-child {
+            border-bottom-left-radius: .25rem;
+            border-bottom-right-radius: .25rem;
+            border-bottom: none;
+        }
+
+        &:hover {
+            background-color: #f5f5f5;
+        }
+
+        &.has-child {
+            padding-right: 25px;
+            &::after {
+                display: inline-block;
+                font: normal normal normal 24px/1 "Material Design Icons";
+                font-size: inherit;
+                text-rendering: auto;
+                line-height: inherit;
+                content: "\FA02";
+                transform: scale(1.2);
+                position: absolute;
+                right: 5px;
+            }
+        }
+
+        &.mdi::before {
+            margin-right: 5px;
+        }
+
+        .context-sub-menu {
+            background-color: white;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            margin-left: 2px;
+        }
+    }
+}
+
+.tribute-container {
+    background-color: #ffffff;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.459) !important;
+    border-radius: 4px;
+    overflow: hidden;
+
+    ul {
+        list-style: none;
+        margin: 0;
+
+        li {
+            padding: 4px 10px;
+            cursor: pointer;
+
+            &.highlight {
+                background-color: #004ffa;
+                color: #ffffff;
+            }
+        }
+    }
+}
+
+.list-templates {
+    .oa-message-preview {
+        display: inline-block;
+        margin: 20px;
+        cursor: pointer;
+        transition: transform .3s;
+        &:hover {
+            transform: scale(1.02);
+        }
+    }
+}
